@@ -1,0 +1,22 @@
+{
+  "name": "gifpuzzle",
+  "version": "0.0.0",
+  "authors": [
+    "Dániel Ács <acsi@silentvertigo.hu>",
+    "Péter Kiss <kicsy87@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "loader.js": "stefanpenner/loader.js#master"
+  },
+  "devDependencies": {
+  }
+}
