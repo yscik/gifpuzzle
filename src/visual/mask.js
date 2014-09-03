@@ -1,7 +1,7 @@
 function Mask(piece)
 {
     this.piece = piece;
-    this.size = 80;
+    this.size = 100 - 10 * 2;
 }
 
 Mask.prototype.createSvgPathString = function()

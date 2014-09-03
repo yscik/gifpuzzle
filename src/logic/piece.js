@@ -29,20 +29,14 @@ Piece.prototype.updatePosition = function updatePosition(currentPosition) {
 Piece.prototype.createEdges = function createEdges(neighbors) {
     
     var neighborsMap = {};
-    for(var n in neighbors) neighborsMap[neighbors[n].direction] = neighbors[n].piece; 
-    
-    var directionPairs = [['top','bottom'], ['left', 'right']];
-    for(var dpi in directionPairs)
-    {
-        var directionPair = directionPairs[dpi];
-        for(var d in  directionPair)
-        {
-            var pair = d ? 1 : 0;
-            var dir = directionPair[d];
-            this.edges[dir] = neighborsMap[dir] ? neighborsMap[dir].edges[directionPair[pair]] : Edge.generate();
-            console.log('[Edge]', this.id, dir, neighborsMap[dir] ? neighborsMap[dir].id + " " + directionPair[pair] : "new");
-        }
-    }
+    for(var n in neighbors) neighborsMap[neighbors[n].direction] = neighbors[n].piece;
+
+  this.edges.top = neighborsMap.top ? neighborsMap.top.edges.bottom : Edge.flat;
+  this.edges.left = neighborsMap.left ? neighborsMap.left.edges.right : Edge.flat;
+
+  this.edges.right = neighborsMap.right ? Edge.flat : Edge.generate();
+  this.edges.bottom = neighborsMap.bottom ? Edge.flat : Edge.generate();
+
 }
 
 

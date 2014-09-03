@@ -25,8 +25,8 @@ DisplayPiece.prototype.setup = function setupDisplayPiece(background)
 
     this.element.style.backgroundPosition = getBackgroundPosition.call(this, this.piece.correctPosition.x, this.piece.correctPosition.y);
 
-    this.element.style.width = px(this.size);
-    this.element.style.height = px(this.size);
+    this.element.style.width = px(this.size+20);
+    this.element.style.height = px(this.size+20);
 
     if (background)
     {    
