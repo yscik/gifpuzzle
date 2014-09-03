@@ -3,6 +3,12 @@
 .piece
     position: absolute
     background-repeat: no-repeat
-
+    transition: scale .5s
+    &:hover
+      transform: scale(1.1)
+      z-index: 10
 .pieceGroup
     position: absolute
+    transition: transform 1s
+    &:not(.grabbed)
+      transition: left .1s, top .1s

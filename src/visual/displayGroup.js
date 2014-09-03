@@ -16,6 +16,7 @@ function DisplayGroup(group, display)
 DisplayGroup.prototype.setup = function setupDisplayGroup()
 {
     this.element.className = 'grab pieceGroup';
+    this.element.style.transform = ['rotate(', Math.random()*10-5 ,'deg)'].join('')
     
     this.updatePosition();
 }
