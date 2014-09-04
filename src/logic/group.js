@@ -1,14 +1,26 @@
 import Position from "./position";
 import Piece from "./piece";
+import EventEmitter from "./utils/eventemitter";
 
 function Group() {
     this.pieces = [];
     this.currentPosition = Position.create(0, 0);
+
+    this.events = new EventEmitter();
+    this.on = {};
+
+    Group.Events.forEach(function setupEvent(eventName) {
+        this.on[eventName] = this.events.listen.bind(this.events, eventName);
+    }.bind(this));
+
 }
+
+Group.Events = ['merged'];
 
 Group.prototype.mergeGroup = function mergeGroup(group)
 {
     group.pieces.slice(0).forEach(this.addPiece.bind(this));
+    this.events.emit('merged', group);
 }
 
 Group.prototype.addPiece = function(piece)
@@ -60,7 +72,5 @@ Group.prototype.attachNewNeighbors = function()
     }
     
 };
-
-
 
 export default Group;

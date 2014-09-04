@@ -11,6 +11,8 @@ function DisplayGroup(group, display)
     this.element.displayGroup = this;
     
     this.setup();
+
+  group.on.merged(this.merged.bind(this));
 }
 
 DisplayGroup.prototype.setup = function setupDisplayGroup()
@@ -20,6 +22,11 @@ DisplayGroup.prototype.setup = function setupDisplayGroup()
     
     this.updatePosition();
 }
+
+DisplayGroup.prototype.merged = function playMergeAnimation()
+{
+  this.element.classList.add('merged');
+};
 
 DisplayGroup.prototype.updatePieces = function updatePiece()
 {
@@ -33,14 +40,17 @@ DisplayGroup.prototype.updatePieces = function updatePiece()
 
 DisplayGroup.prototype.addPiece = function addPiece(displayPiece)
 {
-    this.element.appendChild(displayPiece.element);
+
     this.pieces.push(displayPiece);
     
     if(displayPiece.group) {
         displayPiece.group.removePiece(displayPiece);
     }
     displayPiece.group = this;
+
+    this.element.appendChild(displayPiece.element);
     displayPiece.updatePosition();
+
 };
 
 DisplayGroup.prototype.removePiece = function removePiece(displayPiece)
