@@ -10,8 +10,9 @@ export default
     
     arePiecesMatching: function arePiecesMatching(pieceA, pieceB)
     {
-        var diff = {x: pieceA.correctPosition.x - pieceB.correctPosition.x, 
-                    y: pieceA.correctPosition.y - pieceB.correctPosition.y, };
+        var diff = {x: pieceA.correctPosition.x - pieceB.correctPosition.x,
+                    y: pieceA.correctPosition.y - pieceB.correctPosition.y };
+
         var res = (diff.y == 0 && (diff.x == 1 || diff.x == -1) && pieceA.currentPosition.x - pieceB.currentPosition.x == diff.x)
             || (diff.x == 0 && (diff.y == 1 || diff.y == -1) && pieceA.currentPosition.y - pieceB.currentPosition.y == diff.y);
         

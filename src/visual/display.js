@@ -8,7 +8,7 @@ import Position from "../logic/position";
 function Display(board)
 {
     this.PIECESIZE = 100;
-    this.background = "https://31.media.tumblr.com/7c828dd2bb44f0f48e22e9a350f2c112/tumblr_n6hqg5gtX61s373hwo1_500.gif";
+    this.background = "http://33.media.tumblr.com/22dfb8ae9cf40ec7c72c07f61aac2a02/tumblr_muq9trlP471r339oho1_500.gif";
 
     this.board = board;
     this.setup();

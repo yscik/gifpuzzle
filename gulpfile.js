@@ -42,7 +42,7 @@ gulp.task('javascript', ['test'], function() {
         .pipe(sourcemap.init())
         .pipe(traceur({modules: 'amd', moduleName: true}))
         .pipe(concat('gifpuzzle.js'))
-        .pipe(sourcemap.write())
+        .pipe(sourcemap.write({sourceRoot: '/gifpuzzle'}))
         .pipe(gulp.dest(paths.javascript.dest));
 });
 

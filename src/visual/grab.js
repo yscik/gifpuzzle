@@ -42,9 +42,10 @@ function Grab(container)
       if(!grabbedElement) return;
     
       //snapToGrid(grabbedElement);
-      grabbedElement.classList.remove('grabbed');
-      
+
       if(lastPos) _g.on.released(grabbedElement, lastPos);
+
+      grabbedElement.classList.remove('grabbed');
       grabbedElement = null;
       
     }
