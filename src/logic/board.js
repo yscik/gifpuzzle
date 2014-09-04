@@ -44,12 +44,25 @@ Board.prototype.createPieces = function createPieces()
 
 Board.prototype.shuffle = function shuffleGroups()
 {
+    this.pieceMap = [];
+
     this.groups.forEach(function (group)
     {
-        group.updatePosition(Position.create(Math.round(Math.random()*this.size.x), Math.round(Math.random()*this.size.y)));
-        
+        var position;
+        do
+        {
+          position = Position.create(Math.round(Math.random() * this.size.x), Math.round(Math.random() * this.size.y))
+        } while (this.on(position));
+
+        group.updatePosition(position);
+
     }.bind(this));
 };
+
+Board.prototype.on = function getPieceOnPosition(position)
+{
+  return this.pieceMap[getPositionIndex(position)];
+}
 
 Board.create = function createBoard(size)
 {
@@ -83,10 +96,10 @@ Board.prototype.getNeighbors = function getPieceNeighbors(position)
     
     function checkPiece(x,y)
     {
-        var neighbor = this.pieceMap[getPositionIndex(
+        var neighbor = this.on(
             {x: position.x + x,
             y: position.y + y}
-        )];
+        );
         
         if(neighbor) neighbors.push({direction: directions[x][y], piece: neighbor});
     }
